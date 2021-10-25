@@ -1,12 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import FilterableProductTable from './FilterableProductTable/index'
-import PRODUCTS from './data'
+
+class App extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      name: 'zw'
+    }
+  }
+
+  render() {
+    return (<div>{this.state.name}</div>)
+  }
+}
 
 
 ReactDOM.render(
-  <FilterableProductTable products={PRODUCTS} />,
+  <App />,
   document.getElementById('root')
 );
 
