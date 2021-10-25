@@ -3,15 +3,27 @@ import ReactDOM from 'react-dom';
 import './index.css';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      name: 'zw'
-    }
+  constructor() {
+    super()
+    // 你可以直接获取 DOM button 的 ref：
+    this.ref = React.createRef();
+  }
+
+
+  add = () => {
+    console.log('==', this.ref.current)
   }
 
   render() {
-    return (<div>{this.state.name}</div>)
+    const FancyButton = React.forwardRef((props, ref) => (  //作为第二个参数接收
+      <button ref={ref} className="FancyButton" onClick={this.add}>
+        {props.children}
+      </button>
+    ));
+
+
+    return (
+      <FancyButton ref={this.ref} >Click me!</FancyButton>)
   }
 }
 
